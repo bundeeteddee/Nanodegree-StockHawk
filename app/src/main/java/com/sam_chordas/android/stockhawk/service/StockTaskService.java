@@ -5,15 +5,20 @@ import android.content.Context;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
+import com.sam_chordas.android.stockhawk.application.EApplication;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
@@ -27,7 +32,7 @@ import com.squareup.okhttp.Response;
  * and is used for the initialization and adding task as well.
  */
 public class StockTaskService extends GcmTaskService {
-    private String LOG_TAG = StockTaskService.class.getSimpleName();
+    protected static final String LOG_TAG = StockTaskService.class.getSimpleName();
 
     private OkHttpClient client = new OkHttpClient();
     private Context mContext;
@@ -124,8 +129,24 @@ public class StockTaskService extends GcmTaskService {
                         mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                                 null, null);
                     }
-                    mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
-                            Utils.quoteJsonToContentVals(getResponse));
+
+                    //Attempt to convert from json string to an array of ContentProviderOperation objects
+                    //If we get nothing AND is not an Update request, we know something went wrong trying to add new stock symbol
+                    ArrayList contentProviderOperationsObjs = Utils.quoteJsonToContentVals(getResponse);
+                    if(!isUpdate && contentProviderOperationsObjs.isEmpty()){
+                        //Add stock symbol failed
+                        result = GcmNetworkManager.RESULT_FAILURE;
+
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(EApplication.getInstance(), "Stock Symbol is not valid", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else{
+                        mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY, contentProviderOperationsObjs);
+                    }
                 } catch (RemoteException | OperationApplicationException e) {
                     Log.e(LOG_TAG, "Error applying batch insert", e);
                 }

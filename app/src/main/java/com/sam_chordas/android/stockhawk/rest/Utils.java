@@ -45,6 +45,8 @@ public class Utils {
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "String to JSON failed: " + e);
+        } catch (Exception ex){
+            //Catch all execptions. If anything goes wrong with parsing to JSON, we consider it a fail
         }
         return batchOperations;
     }
