@@ -6,4 +6,23 @@
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
            https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <!-- Stock Listing -->
+    <dimen name="stock_listing_general_message_margin">40dp</dimen>
+
+    <!-- Stock details -->
+    <dimen name="stock_details_toolbar_spacer">60dp</dimen>
+    <dimen name="stock_details_spacer">20dp</dimen>
+    <dimen name="stock_details_movement">20dp</dimen>
+
+    <!-- Charting -->
+    <item name="chart_linedataset_linewidth" format="float" type="dimen">2.0</item>
+    <item name="chart_linedataset_circle_radius" format="float" type="dimen">5.0</item>
+    <item name="chart_linedataset_circle_hole_radius" format="float" type="dimen">2.5</item>
+    <item name="chart_linedataset_value_text_size" format="float" type="dimen">11.0</item>
+    <item name="chart_linedataset_xaxis_text_size" format="float" type="dimen">12.0</item>
+    <dimen name="chart_linedataset_yaxis_spacing_top">40dp</dimen>
+    <dimen name="chart_linedataset_yaxis_spacing_bottom">40dp</dimen>
+
+
 </resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sam_chordas.android.stockhawk.ui.StockDetailActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="2dp"
+        />
+
+    <!-- spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stock_details_toolbar_spacer"
+        android:background="?attr/colorPrimary"
+        android:layout_below="@+id/toolbar"
+        android:elevation="2dp"
+        />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/stock_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:elevation="4dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardElevation="8dp">
+
+        <android.support.v7.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_dark"
+            app:columnCount="3">
+
+            <android.support.v4.widget.Space
+                android:layout_height="@dimen/stock_details_spacer"
+                app:layout_columnSpan="3"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <!-- Symbol -->
+            <TextView
+                android:id="@+id/stock_symbol"
+                android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
+                android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textColor="@color/primary_light"
+                app:layout_columnSpan="3"
+                app:layout_columnWeight="1"
+                tools:text="YHOO" />
+
+            <!-- Bidding price-->
+            <TextView
+                android:id="@+id/stock_bid_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/primary_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_columnWeight="2"
+                app:layout_gravity="center_vertical"
+                tools:text="19" />
+
+            <!-- Is Up -->
+            <ImageView
+                android:id="@+id/stock_movement"
+                android:layout_width="0dp"
+                android:adjustViewBounds="true"
+                android:maxHeight="@dimen/stock_details_movement"
+                android:maxWidth="@dimen/stock_details_movement"
+                app:layout_columnWeight="0.5"
+                tools:src="@drawable/ic_price_up" />
+
+            <!-- Price change-->
+            <TextView
+                android:id="@+id/stock_bid_price_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_columnWeight="2"
+                app:layout_gravity="center_vertical"
+                tools:text="+0.10 (+2%)" />
+
+            <android.support.v4.widget.Space
+                android:layout_height="@dimen/stock_details_spacer"
+                app:layout_columnSpan="3"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+
+        </android.support.v7.widget.GridLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!-- Graph -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stock_details_container"
+        android:layout_margin="30dp"
+        android:minHeight="300dp"
+        />
+
+    <TextView
+        android:id="@+id/general_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stock_listing_general_message_margin"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:text="@string/network_toast"
+        />
+
+    <ProgressBar
+        android:id="@+id/load_progress"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:visibility="visible"/>
+
+</RelativeLayout>
+
+

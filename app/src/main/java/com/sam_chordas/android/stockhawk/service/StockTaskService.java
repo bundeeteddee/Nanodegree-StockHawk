@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -18,10 +17,12 @@ import java.util.ArrayList;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
+import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.application.EApplication;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
+import com.sam_chordas.android.stockhawk.ui.ToastUtil;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -32,8 +33,10 @@ import com.squareup.okhttp.Response;
  * and is used for the initialization and adding task as well.
  */
 public class StockTaskService extends GcmTaskService {
+    //Tag
     protected static final String LOG_TAG = StockTaskService.class.getSimpleName();
 
+    //Variables
     private OkHttpClient client = new OkHttpClient();
     private Context mContext;
     private StringBuilder mStoredSymbols = new StringBuilder();
@@ -141,7 +144,7 @@ public class StockTaskService extends GcmTaskService {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(EApplication.getInstance(), "Stock Symbol is not valid", Toast.LENGTH_SHORT).show();
+                                ToastUtil.ShowCentral(EApplication.getInstance(), R.string.stock_symbol_do_not_exist).show();
                             }
                         });
                     }else{

@@ -36,3 +36,10 @@
 .gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock
 .gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin
 .gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock
+.idea/libraries/MPAndroidChart_v3_0_0_beta1.xml
+.idea/libraries/butterknife_8_2_1.xml
+.idea/libraries/butterknife_annotations_8_2_1.xml
+.idea/libraries/cardview_v7_23_1_1.xml
+.idea/libraries/gridlayout_v7_23_1_0.xml
+.idea/libraries/support_annotations_24_0_0.xml
+.idea/vcs.xml

@@ -22,7 +22,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right"
         >
 
         <TextView
@@ -30,7 +29,11 @@
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:layout_gravity="end"
             android:paddingRight="10sp"
+            android:paddingEnd="10sp"
             tools:text="1000.00"
             />
 
@@ -41,7 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="3dp"
+            android:paddingStart="3dp"
             android:paddingRight="3dp"
+            android:paddingEnd="3dp"
             tools:text="100%"
             />
     </LinearLayout>
