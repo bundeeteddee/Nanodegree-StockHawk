@@ -16,4 +16,5 @@ Clone repo and setup your `GCM` [Google Developers](https://developers.google.co
 * [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart), charting / graphing purpose
 
 # Screenshots
-
+|[![Stock Listing](screenshot_phone_stock_listing.png)](https://bundeeteddee.github.io/Nanodegree-StockHawk/)|[![Stock Search](screenshot_phone_symbol_search.png)](https://bundeeteddee.github.io/Nanodegree-StockHawk/)|[![Stock Details](screenshot_phone_stock_details.png)](https://bundeeteddee.github.io/Nanodegree-StockHawk/)|[![Stock Widget](screenshot_phone_widget.png)](https://bundeeteddee.github.io/Nanodegree-StockHawk/)|
+|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
