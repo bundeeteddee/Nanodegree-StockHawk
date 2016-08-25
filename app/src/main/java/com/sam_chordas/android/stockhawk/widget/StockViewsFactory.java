@@ -93,7 +93,7 @@ public class StockViewsFactory implements RemoteViewsService.RemoteViewsFactory 
         //Send the whole quotes object through
         Intent fillInIntent = new Intent();
         fillInIntent.putExtra(IntentExtras.QUOTE, quote);
-        views.setOnClickFillInIntent(R.id.list_item, fillInIntent); //R.id.list_item is the container main container in list view item layout
+        views.setOnClickFillInIntent(R.id.stock_list_item, fillInIntent); //R.id.stock_list_item is the container main container in list view item layout
         return views;
     }
 

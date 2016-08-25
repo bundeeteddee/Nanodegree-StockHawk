@@ -8,9 +8,7 @@
     android:orientation="horizontal"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:focusable="true"
-    android:id="@+id/list_item"
->
+    android:id="@+id/stock_list_item" >
 
     <TextView
         android:id="@+id/stock_symbol"
