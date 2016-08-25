@@ -43,3 +43,7 @@
 .idea/libraries/gridlayout_v7_23_1_0.xml
 .idea/libraries/support_annotations_24_0_0.xml
 .idea/vcs.xml
+.idea/libraries/play_services_base_8_3_0.xml
+.idea/libraries/play_services_basement_8_3_0.xml
+.idea/libraries/play_services_gcm_8_3_0.xml
+.idea/libraries/play_services_measurement_8_3_0.xml

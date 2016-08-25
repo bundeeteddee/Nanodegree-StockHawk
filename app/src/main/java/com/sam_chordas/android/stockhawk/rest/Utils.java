@@ -34,6 +34,7 @@ public class Utils {
      * Generate url to get historical data for a specified stock symbol
      * example: https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20%3D%20%22FB%22%20AND%20startDate%20%3D%20%222009-09-11%22%20AND%20endDate%20%3D%20%222012-09-11%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
      * example query: select * from yahoo.finance.historicaldata where symbol = "FB" AND startDate = "2009-09-11" AND endDate = "2012-09-11"
+     * dev: https://developer.yahoo.com/yql/?dataTypeRadios=JSON
      * @param symbol
      * @param startDate
      * @param endDate

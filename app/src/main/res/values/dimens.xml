@@ -24,5 +24,10 @@
     <dimen name="chart_linedataset_yaxis_spacing_top">40dp</dimen>
     <dimen name="chart_linedataset_yaxis_spacing_bottom">40dp</dimen>
 
+    <!-- Widget -->
+    <dimen name="widget_stock_default_width">250dp</dimen>
+    <dimen name="widget_stock_default_height">180dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+
 
 </resources>

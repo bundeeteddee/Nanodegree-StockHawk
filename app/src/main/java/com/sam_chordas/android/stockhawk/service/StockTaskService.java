@@ -1,5 +1,7 @@
 package com.sam_chordas.android.stockhawk.service;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.OperationApplicationException;
@@ -23,6 +25,7 @@ import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
 import com.sam_chordas.android.stockhawk.ui.ToastUtil;
+import com.sam_chordas.android.stockhawk.widget.StockWidgetProvider;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -33,7 +36,7 @@ import com.squareup.okhttp.Response;
  * and is used for the initialization and adding task as well.
  */
 public class StockTaskService extends GcmTaskService {
-    //Tag
+
     protected static final String LOG_TAG = StockTaskService.class.getSimpleName();
 
     //Variables
@@ -157,6 +160,11 @@ public class StockTaskService extends GcmTaskService {
                 e.printStackTrace();
             }
         }
+
+        //Notify changes to widgets so its listview can update itself
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(EApplication.getInstance());
+        int appWidgetIds[] = appWidgetManager.getAppWidgetIds(new ComponentName(EApplication.getInstance(), StockWidgetProvider.class));
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_stock_list);
 
         return result;
     }

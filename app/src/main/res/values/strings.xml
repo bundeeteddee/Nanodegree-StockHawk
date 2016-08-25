@@ -27,4 +27,7 @@
     <string name="charting_closing_price_title" formatted="false" translatable="true">Closing Price (Last %1$d Days)</string>
     <string name="charting_closing_price_no_data" translatable="true">No data for closing prices</string>
 
+    <!-- Widget -->
+    <string name="title_widget_stock" translatable="true">Stock Hawk</string>
+
 </resources>

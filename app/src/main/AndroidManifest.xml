@@ -13,8 +13,6 @@
 
     <uses-permission android:name="com.google.android.gcm.demo.permission.C2D_MESSAGE"/>
 
-
-
     <application
         android:name=".application.EApplication"
         android:allowBackup="true"
@@ -42,10 +40,25 @@
         </service>
         <service android:name=".service.StockIntentService"/>
 
+        <!-- Stock Widget -->
+        <receiver
+            android:name=".widget.StockWidgetProvider"
+            android:label="@string/title_widget_stock" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget_stock" />
+        </receiver>
+        <service
+            android:name=".widget.StockWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
         <provider
             android:name=".data.generated.QuoteProvider"
             android:authorities="com.sam_chordas.android.stockhawk.data.QuoteProvider"
-            android:exported="false"/>
+            android:exported="true"/>
 
         <activity
             android:name=".ui.StockDetailActivity"

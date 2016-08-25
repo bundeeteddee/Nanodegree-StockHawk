@@ -60,7 +60,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     private static final int CURSOR_LOADER_ID = 0;
     private QuoteCursorAdapter mCursorAdapter;
     private Context mContext;
-    private Cursor mCursor;
     private Unbinder mUnbinder;
 
     @Override
@@ -85,6 +84,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             mServiceIntent.putExtra("tag", "init");
             startService(mServiceIntent);
         }
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         getLoaderManager().initLoader(CURSOR_LOADER_ID, null, this);
 
@@ -241,10 +241,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         mCursorAdapter.swapCursor(data);
-        mCursor = data;
 
         if(data == null ||
                 data.getCount() == 0){
+
             if(!NetworkUtil.IsConnected()){
                 mGeneralMessage.setVisibility(View.VISIBLE);
                 mGeneralMessage.setText(R.string.network_toast);
