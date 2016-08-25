@@ -17,6 +17,7 @@
     <string name="price_down" translatable="true">Down</string>
     <string name="change_units_percentage" translatable="true">Percentage</string>
     <string name="change_units_price" translatable="true">Price</string>
+    <string name="stocks_no_data" translatable="true">There are currently no stock data.</string>
 
     <!-- content Description -->
     <string name="cd_add_stock_symbol" translatable="true">Add A Stock Symbol To Monitor</string>

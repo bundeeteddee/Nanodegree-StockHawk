@@ -17,6 +17,7 @@ import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -50,6 +51,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     @BindView(R.id.general_message) TextView mGeneralMessage;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.fab) FloatingActionButton mFab;
+    @BindView(R.id.load_progress) ProgressBar mProgress;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -233,6 +235,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        mProgress.setVisibility(View.VISIBLE);
+
         // This narrows the return to only the stocks that are most current.
         return new CursorLoader(this, QuoteProvider.Quotes.CONTENT_URI,
                 new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.BIDPRICE,
@@ -244,16 +248,19 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        mProgress.setVisibility(View.GONE);
+
         mCursorAdapter.swapCursor(data);
-
-        if(data == null ||
-                data.getCount() == 0){
-
+        if(data.getCount() == 0){
             if(!NetworkUtil.IsConnected()){
                 mGeneralMessage.setVisibility(View.VISIBLE);
                 mGeneralMessage.setText(R.string.network_toast);
-                return;
+            }else{
+                //A strong assumption here: We have network, cursor has no data yet, meaning this is an initial load
+                // with empty database, the get from yahoo is taking a while to come back, so it is ongoing.
+                mProgress.setVisibility(View.VISIBLE);
             }
+            return;
         }
         mGeneralMessage.setVisibility(View.GONE);
     }

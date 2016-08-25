@@ -30,6 +30,14 @@
         tools:text="@string/network_toast"
         />
 
+    <ProgressBar
+        android:id="@+id/load_progress"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
