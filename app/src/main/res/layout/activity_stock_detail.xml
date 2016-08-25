@@ -31,6 +31,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:focusable="true"
         android:elevation="4dp"
         app:cardPreventCornerOverlap="false"
         app:cardElevation="8dp">
@@ -109,6 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stock_details_container"
+        android:focusable="true"
         android:layout_margin="30dp"
         android:minHeight="300dp"
         />

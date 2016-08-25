@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ public class StockDetailActivity extends AppCompatActivity implements LoaderMana
     protected static final String TAG = StockDetailActivity.class.getCanonicalName();
 
     //Bind
+    @BindView(R.id.stock_details_container) CardView mCardView;
     @BindView(R.id.stock_symbol) TextView mSymbolText;
     @BindView(R.id.stock_bid_price) TextView mBidPriceText;
     @BindView(R.id.stock_bid_price_change) TextView mChangeText;
@@ -83,6 +85,13 @@ public class StockDetailActivity extends AppCompatActivity implements LoaderMana
             mMovementIcon.setImageResource(R.drawable.ic_price_down);
         }
         mLineChart.setNoDataText(null);
+
+        //Set content description for cardview - stock details
+        mCardView.setContentDescription(String.format(getString(R.string.cd_stock_details),
+                mQuote.getSymbol(),
+                mQuote.getBidPrice(),
+                (mQuote.isUp() ? getString(R.string.price_up) : getString(R.string.price_down)),
+                mQuote.getChange()));
 
         //Start loader
         getSupportLoaderManager().restartLoader(1, null, this).forceLoad();

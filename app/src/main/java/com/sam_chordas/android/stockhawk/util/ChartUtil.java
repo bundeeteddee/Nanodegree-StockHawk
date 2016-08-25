@@ -109,6 +109,12 @@ public final class ChartUtil {
         xAxis.setAxisMinValue(0f);
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(valueFormatter);
+
+        //Set content description
+        chart.setContentDescription(String.format(EApplication.getInstance().getString(R.string.cd_stock_chart),
+                                    daysOfData,
+                                    chart.getLineData().getYMax(),
+                                    chart.getLineData().getYMin()));
     }
 
 

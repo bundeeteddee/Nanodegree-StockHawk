@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sam_chordas.android.stockhawk.R;
+import com.sam_chordas.android.stockhawk.application.EApplication;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.model.Quote;
@@ -50,6 +51,7 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         viewHolder.symbol.setText(cursor.getString(cursor.getColumnIndex("symbol")));
         viewHolder.bidPrice.setText(cursor.getString(cursor.getColumnIndex("bid_price")));
         int sdk = Build.VERSION.SDK_INT;
+
         if (cursor.getInt(cursor.getColumnIndex("is_up")) == 1) {
             if (sdk < Build.VERSION_CODES.JELLY_BEAN) {
                 viewHolder.change.setBackgroundDrawable(
@@ -71,6 +73,17 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
             viewHolder.change.setText(cursor.getString(cursor.getColumnIndex("percent_change")));
         } else {
             viewHolder.change.setText(cursor.getString(cursor.getColumnIndex("change")));
+        }
+
+        //Set content description for clearer accessibility. Narrates direction change of price
+        if(cursor.getInt(cursor.getColumnIndex("is_up")) == 1){
+            viewHolder.change.setContentDescription(String.format(EApplication.getInstance().getString(R.string.cd_price_change),
+                    EApplication.getInstance().getString(R.string.price_up),
+                    viewHolder.change.getText().toString()));
+        }else{
+            viewHolder.change.setContentDescription(String.format(EApplication.getInstance().getString(R.string.cd_price_change),
+                    EApplication.getInstance().getString(R.string.price_down),
+                    viewHolder.change.getText().toString()));
         }
     }
 

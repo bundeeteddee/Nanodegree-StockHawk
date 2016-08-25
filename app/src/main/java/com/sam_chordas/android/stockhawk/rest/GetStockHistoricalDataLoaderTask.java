@@ -2,7 +2,6 @@ package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -61,8 +60,6 @@ public class GetStockHistoricalDataLoaderTask extends AsyncTaskLoader<AsyncTaskL
         long daysAgoInMili = todayInMili - (1000 * 60 * 60 * 24 * mDaysOfData);
         try {
             String url = Utils.GenerateQueryForStockHistoricalData(mQuote.getSymbol(), daysAgoInMili, todayInMili);
-
-            Log.e(TAG, url);
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()

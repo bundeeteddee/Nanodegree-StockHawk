@@ -13,9 +13,17 @@
     <string name="stock_symbol_do_not_exist" translatable="true">Stock Symbol is not valid</string>
     <string name="input_hint" translatable="false">FB</string>
     <string name="input_prefill" translatable="false"></string>
+    <string name="price_up" translatable="true">Up</string>
+    <string name="price_down" translatable="true">Down</string>
+    <string name="change_units_percentage" translatable="true">Percentage</string>
+    <string name="change_units_price" translatable="true">Price</string>
 
     <!-- content Description -->
     <string name="cd_add_stock_symbol" translatable="true">Add A Stock Symbol To Monitor</string>
+    <string name="cd_price_change" formatted="false" translatable="false">%1$s - %2$s</string> <!-- Up/down - Price -->
+    <string name="cd_stock_details" formatted="false" translatable="true">Stock symbol - %1$s, Current price is %2$s, %3$s - %4$s</string>
+    <string name="cd_stock_chart" formatted="false" translatable="true">Based on data for the last %1$d days, highest price is %2$s, and lowest price is %3$s</string>
+    <string name="cd_price_change_mode" formatted="false" translatable="true">Change units now using %1$s</string> <!-- price / percentage-->
 
     <!-- Network -->
     <string name="network_toast" translatable="true">Uh-oh! This app requires an internet connection</string>
