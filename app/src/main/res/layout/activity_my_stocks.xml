@@ -54,6 +54,6 @@
         tools:fab_shadow="true"
         tools:fab_type="normal"
         tools:layout_anchor="recycler_view"
-        tools:layout_anchorGravity="bottom | end"
+        tools:layout_anchorGravity="bottom | end | right"
         />
 </FrameLayout>
