@@ -46,6 +46,8 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/cd_add_stock_symbol"
         android:src="@drawable/ic_add_white_24dp"
+        android:paddingBottom="@dimen/stock_listing_fab_padding"
+        android:clipToPadding="false"
         tools:fab_colorNormal="@color/material_blue_500"
         tools:fab_colorPressed="@color/material_blue_600"
         tools:fab_colorRipple="@color/ripple"

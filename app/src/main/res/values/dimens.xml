@@ -12,6 +12,7 @@
     <dimen name="stock_listing_item_container_padding">16dp</dimen>
     <dimen name="stock_listing_item_change_padding">3dp</dimen>
     <dimen name="stock_listing_item_bid_price_padding">10dp</dimen>
+    <dimen name="stock_listing_fab_padding">48dp</dimen>
 
     <!-- Stock details -->
     <dimen name="stock_details_toolbar_spacer">60dp</dimen>
